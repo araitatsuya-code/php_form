@@ -1,6 +1,7 @@
 <?php
 $subject = "お仕事に関するお問い合わせ";
 $body = "お見積もりの件で、連絡をしました。";
+$body2 = $body;
 ?>
 <!doctype html>
 <html>
@@ -10,6 +11,6 @@ $body = "お見積もりの件で、連絡をしました。";
 </head>
 <body>
 <h1><?php echo $subject ?></h1>
-<p><?php echo $body ?></p>
+<p><?php echo $body2 ?></p>
 </body>
 </html>
