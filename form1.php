@@ -1,7 +1,7 @@
 <?php
-$subject = "お仕事に関するお問い合わせ";
-$body = "お見積もりの件で、連絡をしました。";
-$body2 = $body;
+$form = array();
+$form['subject'] = "お仕事に関するお問い合わせ";
+$form['body'] = "お見積もりの件で、連絡をしました。"
 ?>
 <!doctype html>
 <html>
@@ -10,7 +10,7 @@ $body2 = $body;
   <title>お問い合わせ</title>
 </head>
 <body>
-<h1><?php echo $subject ?></h1>
-<p><?php echo $body2 ?></p>
+<h1><?php echo $form['subject'] ?></h1>
+<p><?php echo $form['body'] ?></p>
 </body>
 </html>
