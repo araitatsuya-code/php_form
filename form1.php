@@ -1,10 +1,31 @@
 <?php
+
 echo "<pre>";
 var_dump($_POST);
 echo "</pre>";
-// $form = array();
-// $form['subject'] = "お仕事に関するお問い合わせ";
-// $form['body'] = "お見積もりの件で、連絡をしました。"
+
+$errors = array();
+if(isset($_POST['submit'])){
+
+$name = $_POST[('name')];
+$email = $_POST[('email')];
+$subject = $_POST[('subject')];
+$body = $_POST[('body')];
+if($name === ""){
+  $errors['name'] = "お名前が入力されていません";
+}
+if($email === ""){
+  $errors['email'] = "メールアドレスが入力されていません";
+}
+if($body === ""){
+  $errors['body'] = "お問い合わせ内容が入力されていません。";
+}
+}
+
+echo "<pre>";
+var_dump($errors);
+echo "</pre>";
+
 ?>
 <!doctype html>
 <html>
