@@ -8,6 +8,12 @@ if(isset($_SESSION['name'])){
   $subject = $_SESSION['subject'];
   $body = $_SESSION['body'];
 }
+
+$_SESSION['token'] =
+base64_encode(openssl_random_pseudo_bytes(48));
+$token = htmlspecialchars($_SESSION['token'],
+ENT_QUOTES);
+
 ?>
 <!doctype html>
 <html>
@@ -17,6 +23,7 @@ if(isset($_SESSION['name'])){
 </head>
 <body>
   <form action="form3.php" method="post">
+  <input type="hidden" name="token" value="<?php echo $token ?>">
     <table>
       <tr>
         <th>お名前</th><td><?php echo $name; ?></td>
@@ -35,6 +42,7 @@ if(isset($_SESSION['name'])){
       </tr>
       </table>
     </form>
+    <p><a href="form1.php?action=edit">入力画面へ戻る</a></p>
 </body>
 </html>
 

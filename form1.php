@@ -34,10 +34,12 @@ if($body === ""){
   }
 }
 
-echo "<pre>";
-var_dump($errors);
-echo "</pre>";
-
+if(isset($_GET['action']) && $_GET['action'] === 'edit'){
+  $name = $_SESSION['name'];
+  $email = $_SESSION['email'];
+  $subject = $_SESSION['subject'];
+  $body = $_SESSION['body'];
+}
 ?>
 <!doctype html>
 <html>
