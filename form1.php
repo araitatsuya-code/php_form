@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 $errors = array();
 if(isset($_POST['submit'])){
 
@@ -22,6 +22,16 @@ if($email === ""){
 if($body === ""){
   $errors['body'] = "お問い合わせ内容が入力されていません。";
 }
+
+  if(count($errors) === 0){
+    $_SESSION['name'] = $name;
+    $_SESSION['email'] = $email;
+    $_SESSION['subject'] = $subject;
+    $_SESSION['body'] = $body;
+
+    header('Location:http://localhost/php_form/form2.php');
+    exit();
+  }
 }
 
 echo "<pre>";
