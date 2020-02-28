@@ -6,7 +6,8 @@
     unset($_SESSION['token']);
     echo "きちんとしたアクセスです。";
   }else{
-    exit("不正なアクセスです");
+    header('Location:http://localhost/php_form/form1.php');
+    exit("");
   }
 ?>
 <!doctype html>
