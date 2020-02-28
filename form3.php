@@ -16,7 +16,8 @@
     $password = '';
 
     $dbh = new PDO($dsn,$user,$password);
-    $dbh->collator_set_attribute(PDO::ATTR_EMURATE_PREPARES,false);
+    $dbh->query('SET NAMES utf8');
+    $dbh->setAttribute(PDO::ATTR_EMULATE_PREPARES,false);
 
     $sql = 'INSERT INTO inquiries (name, email, subject, body) VALUES (?,?,?,?)';
     $stmt = $dbh->prepare($sql);
@@ -26,9 +27,22 @@
     $stmt->bindValue(3,$subject, PDO::PARAM_STR);
     $stmt->bindValue(2,$body, PDO::PARAM_STR);
 
-    stmt->execute();
-    
+    $stmt->execute();
+
     $dbh = null;
+
+    $_SESSION = array();
+    
+    if(ini_get("session.use_cookies")){
+      $params = session_get_cookie_params();
+      setcookie(session_name(),'',time() - 42000,
+      $params["path"],$params["domain"],
+      $params["secure"], $params["httponly"]
+    );
+    }
+
+    session_destroy();
+    
   }else{
     header('Location:http://localhost/php_form/form1.php');
     exit("");
